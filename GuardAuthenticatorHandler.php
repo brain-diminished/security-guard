@@ -101,7 +101,7 @@ class GuardAuthenticatorHandler
      */
     public function handleAuthenticationFailure(AuthenticationException $authenticationException, Request $request, AuthenticatorInterface $guardAuthenticator, string $providerKey): ?Response
     {
-        $response = $guardAuthenticator->onAuthenticationFailure($request, $authenticationException);
+        $response = $guardAuthenticator->onAuthenticationFailure($request, $authenticationException, $providerKey);
         if ($response instanceof Response || null === $response) {
             // returning null is ok, it means they want the request to continue
             return $response;

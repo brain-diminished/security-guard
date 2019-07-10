@@ -34,7 +34,7 @@ class FormLoginAuthenticatorTest extends TestCase
 
     public function testAuthenticationFailureWithoutSession()
     {
-        $failureResponse = $this->authenticator->onAuthenticationFailure($this->requestWithoutSession, new AuthenticationException());
+        $failureResponse = $this->authenticator->onAuthenticationFailure($this->requestWithoutSession, new AuthenticationException(), 'test');
 
         $this->assertInstanceOf('Symfony\\Component\\HttpFoundation\\RedirectResponse', $failureResponse);
         $this->assertEquals(self::LOGIN_URL, $failureResponse->getTargetUrl());
@@ -46,7 +46,7 @@ class FormLoginAuthenticatorTest extends TestCase
             ->expects($this->once())
             ->method('set');
 
-        $failureResponse = $this->authenticator->onAuthenticationFailure($this->requestWithSession, new AuthenticationException());
+        $failureResponse = $this->authenticator->onAuthenticationFailure($this->requestWithSession, new AuthenticationException(), 'test');
 
         $this->assertInstanceOf('Symfony\\Component\\HttpFoundation\\RedirectResponse', $failureResponse);
         $this->assertEquals(self::LOGIN_URL, $failureResponse->getTargetUrl());

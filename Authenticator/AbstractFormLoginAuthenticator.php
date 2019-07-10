@@ -36,7 +36,7 @@ abstract class AbstractFormLoginAuthenticator extends AbstractGuardAuthenticator
      *
      * @return RedirectResponse
      */
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception, string $providerKey)
     {
         if ($request->hasSession()) {
             $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);

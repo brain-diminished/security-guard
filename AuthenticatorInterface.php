@@ -126,7 +126,7 @@ interface AuthenticatorInterface extends AuthenticationEntryPointInterface
      *
      * @return Response|null
      */
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception);
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception, string $providerKey);
 
     /**
      * Called when authentication executed and was successful!
